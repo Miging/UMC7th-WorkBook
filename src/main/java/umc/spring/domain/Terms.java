@@ -1,9 +1,13 @@
 package umc.spring.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -11,6 +15,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import umc.spring.domain.common.BaseEntity;
+import umc.spring.domain.mapping.MemberAgree;
 
 @Entity
 @Getter
@@ -24,5 +29,6 @@ public class Terms extends BaseEntity {
     private String title;
     private String body;
     private Boolean optional;
-
+    @OneToMany(mappedBy = "terms",cascade = CascadeType.ALL)
+    private List<MemberAgree> memberAgrees=new ArrayList<>();
 }
