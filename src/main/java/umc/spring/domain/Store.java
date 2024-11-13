@@ -28,7 +28,9 @@ public class Store extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false,length = 50)
     private String name;
+    @Column(nullable = false,length = 50)
     private String address;
     private Float score;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -37,4 +39,14 @@ public class Store extends BaseEntity {
     @OneToMany(mappedBy = "store",cascade = CascadeType.ALL)
     private List<Review> reviews=new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "Store{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", score=" + score +
+                ", region=" + (region != null ? region.getName() : "N/A") + // region의 이름 출력
+                '}';
+    }
 }
