@@ -39,4 +39,16 @@ public class Mission extends BaseEntity {
     private Store store;
     @OneToMany(mappedBy = "mission",cascade = CascadeType.ALL)
     private List<MemberMission> memberMissions=new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Mission{" +
+                "id=" + id +
+                ", reward=" + reward +
+                ", deadLine=" + deadLine +
+                ", missionSpec='" + missionSpec + '\'' +
+                ", store=" + store +
+                ", memberMissions=" + memberMissions +
+                '}';
+    }
 }
