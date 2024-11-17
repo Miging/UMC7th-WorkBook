@@ -45,9 +45,10 @@ public class Application {
 			System.out.println("Executing findMissionsByMemberName with parameters:");
 			System.out.println("memberId: " + memberId);
 
-			missionQueryService.findStoresByMemberId(memberId)
+			missionQueryService.findMissionsByMemberIdAndStatus(memberId,1)
 					.forEach(System.out::println);
-
+			missionQueryService.findMissionsByMemberIdAndStatus(memberId,2)
+					.forEach(System.out::println);
 		};
 	}
 }

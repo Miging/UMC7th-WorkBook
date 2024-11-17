@@ -13,9 +13,10 @@ import umc.spring.repository.MissionRepository.MissionRepository;
 public class MissionQueryServiceImpl implements MissionQueryService {
     private final MissionRepository missionRepository;
     @Override
-    public List<Mission> findStoresByMemberId(Long memberId) {
-        List<Mission> missions=missionRepository.findMissionsByMemberId(memberId,1);
-        missions.forEach(mission -> System.out.println("mission: "+mission));
+    public List<Mission> findMissionsByMemberIdAndStatus(Long memberId,int status) {
+        List<Mission> missions=missionRepository.findMissionsByMemberIdAndStatus(memberId,status,1);
+        String str=status==1?"ongoing":"completed";
+        missions.forEach(mission -> System.out.println(str+" mission: "+mission));
         return missions;
     }
 }

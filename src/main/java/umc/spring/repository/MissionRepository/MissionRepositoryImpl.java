@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import umc.spring.domain.Mission;
 import umc.spring.domain.QMember;
 import umc.spring.domain.QMission;
+import umc.spring.domain.enums.MissionStatus;
 import umc.spring.domain.mapping.QMemberMission;
 
 @Repository
@@ -16,9 +17,10 @@ public class MissionRepositoryImpl {
 
     private final JPAQueryFactory queryFactory;
 
-    public List<Mission> findMissionsByMemberId(Long id,int page) {
+    public List<Mission> findMissionsByMemberIdAndStatus(Long id,int status,int page) {
         QMission mission = QMission.mission;
         QMemberMission memberMission=QMemberMission.memberMission;
+        MissionStatus missionStatus=status==1?MissionStatus.CHALLENGING:MissionStatus.COMPLETE;
 
         return queryFactory
                 .selectFrom(mission)
@@ -27,6 +29,7 @@ public class MissionRepositoryImpl {
                                 .select(memberMission.id)
                                 .from(memberMission)
                                 .where(memberMission.member.id.eq(id))
+                                .where(memberMission.status.eq(missionStatus))
                                 .limit(15)
                                 .offset((page-1)*15)
                 ))
