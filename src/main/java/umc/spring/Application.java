@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import umc.spring.repository.MissionRepository.MissionRepository;
 import umc.spring.service.MissionService.MissionQueryService;
+import umc.spring.service.ReviewService.ReviewQueryService;
 import umc.spring.service.StoreService.StoreQueryService;
 
 @SpringBootApplication
@@ -36,19 +37,32 @@ public class Application {
 //					.forEach(System.out::println);
 
 
-			MissionQueryService missionQueryService=context.getBean(MissionQueryService.class);
+//			MissionQueryService missionQueryService=context.getBean(MissionQueryService.class);
+//
+//			//파라미터 값 설정
+//			Long memberId=1L;
+//
+//			//쿼리메소드 호출 및 쿼리 문자열과 파라미터 출력
+//			System.out.println("Executing findMissionsByMemberName with parameters:");
+//			System.out.println("memberId: " + memberId);
+//
+//			missionQueryService.findMissionsByMemberIdAndStatus(memberId,1)
+//					.forEach(System.out::println);
+//			missionQueryService.findMissionsByMemberIdAndStatus(memberId,2)
+//					.forEach(System.out::println);
+//		};
+			ReviewQueryService reviewQueryService=context.getBean(ReviewQueryService.class);
 
 			//파라미터 값 설정
 			Long memberId=1L;
+			Float score=5.0f;
+			Long storeId=1L;
+			String body="맛있어요";
 
 			//쿼리메소드 호출 및 쿼리 문자열과 파라미터 출력
-			System.out.println("Executing findMissionsByMemberName with parameters:");
-			System.out.println("memberId: " + memberId);
+			System.out.println("Executing createReview with parameters:");
 
-			missionQueryService.findMissionsByMemberIdAndStatus(memberId,1)
-					.forEach(System.out::println);
-			missionQueryService.findMissionsByMemberIdAndStatus(memberId,2)
-					.forEach(System.out::println);
+			System.out.println(reviewQueryService.addReview(memberId,storeId,score,body));
 		};
 	}
 }
