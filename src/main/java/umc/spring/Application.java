@@ -50,19 +50,31 @@ public class Application {
 //					.forEach(System.out::println);
 //			missionQueryService.findMissionsByMemberIdAndStatus(memberId,2)
 //					.forEach(System.out::println);
-//		};
-			ReviewQueryService reviewQueryService=context.getBean(ReviewQueryService.class);
+
+//			ReviewQueryService reviewQueryService=context.getBean(ReviewQueryService.class);
+//
+//			//파라미터 값 설정
+//			Long memberId=1L;
+//			Float score=5.0f;
+//			Long storeId=1L;
+//			String body="맛있어요";
+//
+//			//쿼리메소드 호출 및 쿼리 문자열과 파라미터 출력
+//			System.out.println("Executing createReview with parameters:");
+//
+//			System.out.println(reviewQueryService.addReview(memberId,storeId,score,body));
+
+			MissionQueryService missionQueryService=context.getBean(MissionQueryService.class);
 
 			//파라미터 값 설정
 			Long memberId=1L;
-			Float score=5.0f;
-			Long storeId=1L;
-			String body="맛있어요";
 
 			//쿼리메소드 호출 및 쿼리 문자열과 파라미터 출력
-			System.out.println("Executing createReview with parameters:");
+			System.out.println("Executing findMissionsByMemberIdAndStatus with parameters:");
+			System.out.println("memberId: " + memberId);
 
-			System.out.println(reviewQueryService.addReview(memberId,storeId,score,body));
+			missionQueryService.findMissionsByMemberIdAndRegionId(memberId,1L)
+					.forEach(System.out::println);
 		};
 	}
 }

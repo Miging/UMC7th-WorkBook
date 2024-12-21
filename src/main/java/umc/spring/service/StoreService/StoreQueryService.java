@@ -1,4 +1,4 @@
-package umc.spring.service;
+package umc.spring.service.StoreService;
 
 import java.util.List;
 import java.util.Optional;

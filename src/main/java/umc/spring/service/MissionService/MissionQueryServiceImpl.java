@@ -19,4 +19,11 @@ public class MissionQueryServiceImpl implements MissionQueryService {
         missions.forEach(mission -> System.out.println(str+" mission: "+mission));
         return missions;
     }
+
+    @Override
+    public List<Mission> findMissionsByMemberIdAndRegionId(Long memberId, Long regionId) {
+        List<Mission> missions=missionRepository.findMissionsByMemberIdAndRegionId(memberId,regionId,1);
+        missions.forEach(mission -> System.out.println("mission: "+mission));
+        return missions;
+    }
 }
