@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import umc.spring.repository.MissionRepository.MissionRepository;
+import umc.spring.service.MemberService.MemberQueryService;
 import umc.spring.service.MissionService.MissionQueryService;
 import umc.spring.service.ReviewService.ReviewQueryService;
 import umc.spring.service.StoreService.StoreQueryService;
@@ -20,7 +21,8 @@ public class Application {
 	}
 
 	@Bean
-	public CommandLineRunner run(ApplicationContext context, MissionRepository missionRepository){
+	public CommandLineRunner run(ApplicationContext context, MissionRepository missionRepository,
+								 MemberQueryService memberQueryService){
 		return args -> {
 //			StoreQueryService storeService=context.getBean(StoreQueryService.class);
 //
@@ -64,17 +66,30 @@ public class Application {
 //
 //			System.out.println(reviewQueryService.addReview(memberId,storeId,score,body));
 
-			MissionQueryService missionQueryService=context.getBean(MissionQueryService.class);
+
+//			//홈화면 쿼리
+//			MissionQueryService missionQueryService=context.getBean(MissionQueryService.class);
+//
+//			//파라미터 값 설정
+//			Long memberId=1L;
+//
+//			//쿼리메소드 호출 및 쿼리 문자열과 파라미터 출력
+//			System.out.println("Executing findMissionsByMemberIdAndStatus with parameters:");
+//			System.out.println("memberId: " + memberId);
+//
+//			missionQueryService.findMissionsByMemberIdAndRegionId(memberId,1L)
+//					.forEach(System.out::println);
+
+			//홈화면 쿼리
 
 			//파라미터 값 설정
 			Long memberId=1L;
 
 			//쿼리메소드 호출 및 쿼리 문자열과 파라미터 출력
-			System.out.println("Executing findMissionsByMemberIdAndStatus with parameters:");
+			System.out.println("Executing findMemberById with parameters:");
 			System.out.println("memberId: " + memberId);
 
-			missionQueryService.findMissionsByMemberIdAndRegionId(memberId,1L)
-					.forEach(System.out::println);
+			System.out.println(memberQueryService.findMember(memberId));;
 		};
 	}
 }
