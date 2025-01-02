@@ -40,4 +40,15 @@ public class MemberMission extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id")
     private Mission mission;
+
+    //FIXME: toString() 메서드가 무한루프에 빠질 수 있음
+    //    @Override
+    //    public String toString() {
+    //        return "MemberMission{" +
+    //                "id=" + id +
+    //                ", status=" + status +
+    //                ", member=" + member +
+    //                ", mission=" + mission +
+    //                '}';
+    //    }
 }

@@ -63,4 +63,20 @@ public class Member extends BaseEntity {
     private List<MemberPrefer> memberPrefers=new ArrayList<>();
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Review> reviews=new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", specAddress='" + specAddress + '\'' +
+                ", address='" + address + '\'' +
+                ", gender=" + gender +
+                ", socialType=" + socialType +
+                ", status=" + status +
+                ", inactiveDate=" + inactiveDate +
+                ", email='" + email + '\'' +
+                ", point=" + point +
+                '}';
+    }
 }

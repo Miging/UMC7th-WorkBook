@@ -17,13 +17,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.mapping.ReviewImage;
 
 @Entity
 @Getter
+@Setter
 @Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
 public class Review extends BaseEntity {
     @Id
