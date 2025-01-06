@@ -19,7 +19,7 @@ public class CategoriesExistValidator implements ConstraintValidator<ExistCatego
         ConstraintValidator.super.initialize(constraintAnnotation);
     }
 
-    //ListLong 값을 가진 카테고리가 모두 DB에 있는지 확인
+    //List<Long> 값을 가진 카테고리가 모두 DB에 있는지 확인
     @Override
     public boolean isValid(List<Long> values, ConstraintValidatorContext context) {
         boolean isValid=values.stream()
