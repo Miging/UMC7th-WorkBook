@@ -6,7 +6,7 @@ import umc.spring.repository.region.RegionRepository;
 
 @Service
 @RequiredArgsConstructor
-public class RegionServiceImpl implements RegionService {
+public class RegionCommandServiceImpl implements RegionCommandService {
 
     private final RegionRepository regionRepository;
 

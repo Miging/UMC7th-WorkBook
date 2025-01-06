@@ -1,6 +1,6 @@
 package umc.spring.service.region;
 
-public interface RegionService {
+public interface RegionCommandService {
 
 
     boolean existsById(Long regionId);

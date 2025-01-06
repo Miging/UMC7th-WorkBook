@@ -5,14 +5,14 @@ import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.spring.apipayload.code.status.ErrorStatus;
-import umc.spring.service.region.RegionService;
+import umc.spring.service.region.RegionCommandService;
 import umc.spring.validation.annotation.ExistRegion;
 
 @Component
 @RequiredArgsConstructor
 public class RegionExistValidator implements ConstraintValidator<ExistRegion,Long> {
 
-    private final RegionService regionService;
+    private final RegionCommandService regionService;
 
     @Override
     public void initialize(ExistRegion constraintAnnotation) {
