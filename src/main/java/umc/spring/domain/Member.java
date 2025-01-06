@@ -17,6 +17,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.enums.Gender;
 import umc.spring.domain.enums.MemberStatus;
@@ -27,6 +30,8 @@ import umc.spring.domain.mapping.MemberPrefer;
 
 @Entity
 @Getter
+@DynamicUpdate
+@DynamicInsert
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -51,16 +56,21 @@ public class Member extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
     private MemberStatus status;
     private LocalDate inactiveDate;
-    @Column(nullable = false,length = 50)
+    @Column(length = 50)
     private String email;
+
+    @ColumnDefault("0")
     private Integer point;
 
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<MemberAgree> memberAgrees=new ArrayList<>();
+
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<MemberMission> memberMissions=new ArrayList<>();
+
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<MemberPrefer> memberPrefers=new ArrayList<>();
+
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Review> reviews=new ArrayList<>();
 

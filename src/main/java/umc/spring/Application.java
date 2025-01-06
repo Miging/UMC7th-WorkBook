@@ -6,11 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import umc.spring.repository.MissionRepository.MissionRepository;
-import umc.spring.service.MemberService.MemberQueryService;
-import umc.spring.service.MissionService.MissionQueryService;
-import umc.spring.service.ReviewService.ReviewQueryService;
-import umc.spring.service.StoreService.StoreQueryService;
+import umc.spring.repository.mission.MissionRepository;
+import umc.spring.service.member.MemberQueryService;
 
 @SpringBootApplication
 @EnableJpaAuditing
