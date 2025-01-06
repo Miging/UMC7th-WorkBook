@@ -26,8 +26,10 @@ public class MemberCommandServiceImpl implements MemberCommandService{
         Member newMember = MemberConverter.toEntity(request);
         request.preferCategory()
                 .stream()
+                //요청 값의 카테고리 아이디로 카테고리를 찾아서 없으면 예외를 발생시킴
                 .map(categoryId -> foodCategoryRepository.findById(categoryId).orElseThrow(()->new FoodCategoryException(
                         ErrorStatus.FOOD_CATEGORY_NOT_FOUND)))
+                //찾은 카테고리를 MemberPrefer로 변환
                 .map(MemberPreferConverter::toMemberPrefer)
                 .forEach(memberPrefer -> memberPrefer.setMember(newMember));
 
