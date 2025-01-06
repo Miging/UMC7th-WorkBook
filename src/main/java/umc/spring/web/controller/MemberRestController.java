@@ -16,7 +16,7 @@ import umc.spring.web.dto.member.MemberResponseDTO.JoinResultDTO;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/members")
+@RequestMapping("/user")
 public class MemberRestController {
 
     private final MemberCommandService memberCommandService;
