@@ -11,7 +11,6 @@ import umc.spring.validation.annotation.ExistRegion;
 @Component
 @RequiredArgsConstructor
 public class RegionExistValidator implements ConstraintValidator<ExistRegion,Long> {
-
     private final RegionCommandService regionService;
 
     @Override
