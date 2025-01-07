@@ -1,5 +1,6 @@
 package umc.spring.converter;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,7 @@ public final class StoreConverter {
     public static RegisterResultDTO toRegisterResultDTO(Store store) {
         return RegisterResultDTO.builder()
                 .storeId(store.getId())
-                .createdAt(store.getCreatedAt())
+                .createdAt(LocalDateTime.now())
                 .build();
     }
 }
