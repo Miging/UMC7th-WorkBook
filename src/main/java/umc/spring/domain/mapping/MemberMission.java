@@ -31,7 +31,7 @@ public class MemberMission extends BaseEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false,length = 15)
+    @Column(length = 15)
     private MissionStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -41,14 +41,4 @@ public class MemberMission extends BaseEntity {
     @JoinColumn(name = "mission_id")
     private Mission mission;
 
-    //FIXME: toString() 메서드가 무한루프에 빠질 수 있음
-    //    @Override
-    //    public String toString() {
-    //        return "MemberMission{" +
-    //                "id=" + id +
-    //                ", status=" + status +
-    //                ", member=" + member +
-    //                ", mission=" + mission +
-    //                '}';
-    //    }
 }
