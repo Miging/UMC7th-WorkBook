@@ -10,4 +10,11 @@ public record MissionResponseDTO() {
         Long missionId,
         LocalDateTime createdAt
     ){}
+
+    @Builder
+    public record ChallengeResultDTO(
+        Long missionId,
+        Long memberId,
+        LocalDateTime createdAt
+    ){}
 }
