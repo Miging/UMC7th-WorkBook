@@ -2,6 +2,8 @@ package umc.spring.service.review;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import umc.spring.domain.Member;
 import umc.spring.domain.Review;
@@ -33,5 +35,13 @@ public class ReviewQueryServiceImpl implements ReviewQueryService {
         Review createdReview=reviewRepository.save(review);
         log.debug("created review: {}", createdReview);
         return createdReview;
+    }
+
+    @Override
+    public Page<Review> getReviewList(Long storeId, Integer page) {
+        Store store=storeRepository.findById(storeId).get();
+
+        Page<Review> storePage=reviewRepository.findAllByStore(store, PageRequest.of(page,10));
+        return storePage;
     }
 }
