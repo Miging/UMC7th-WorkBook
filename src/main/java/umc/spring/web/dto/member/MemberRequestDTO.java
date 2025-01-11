@@ -25,5 +25,8 @@ public record MemberRequestDTO() {
             String specAddress,
             @ExistCategories
             List<Long> preferCategory
-    ){}
+    ){
+        // 빈 객체를 나타내는 상수
+        public static final JoinDto EMPTY = new JoinDto("", null, null, null, null, "", "", List.of());
+    }
 }
