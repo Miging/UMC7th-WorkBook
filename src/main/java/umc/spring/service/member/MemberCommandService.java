@@ -6,5 +6,5 @@ import umc.spring.web.dto.member.MemberRequestDTO.JoinDto;
 
 public interface MemberCommandService {
 
-    Member registerMember(@Valid JoinDto request);
+	public Member joinMember(@Valid JoinDto request);
 }
