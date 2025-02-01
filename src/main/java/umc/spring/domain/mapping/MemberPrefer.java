@@ -17,7 +17,6 @@ import umc.spring.domain.FoodCategory;
 import umc.spring.domain.Member;
 import umc.spring.domain.common.BaseEntity;
 
-
 @Entity
 @Getter
 @Builder
@@ -25,23 +24,23 @@ import umc.spring.domain.common.BaseEntity;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id", callSuper = false)
 public class MemberPrefer extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "member_id")
+	private Member member;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private FoodCategory foodCategory;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "category_id")
+	private FoodCategory foodCategory;
 
-    public void setMember(Member member) {
-        this.member = member;
+	public void setMember(Member member) {
+		this.member = member;
 
-        if (!member.getMemberPrefers().contains(this)) {
-            member.getMemberPrefers().add(this);
-        }
-    }
+		if (!member.getMemberPrefers().contains(this)) {
+			member.getMemberPrefers().add(this);
+		}
+	}
 }
